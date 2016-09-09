@@ -4,7 +4,12 @@ if roll == "y":
     roll = 1
     while roll == 1:
         s = input("How many sides?\n")
-        print random.randint(1,s)
+        d = random.randint(1,s)
+        print d
+        if d == s:
+            print "Critical Hit!"
+        if d == 1:
+            print "Critical Fail!"
         if raw_input("Roll again?(y/n)") == "y":
             roll = 1
         else:
