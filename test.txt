@@ -1,0 +1,4 @@
+Hello file!
+Good-bye file.
+
+A third sentence on the fourth line of the file.\m
