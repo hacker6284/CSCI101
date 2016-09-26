@@ -28,6 +28,8 @@ for i in range(1,1000000):
         else:
             j = let
             cont = 1
+    if i%100000 == 0:
+        print i
 total = eighteen + thirteen
 print "18:"
 print 100 * (eighteen / total)
