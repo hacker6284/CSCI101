@@ -1,0 +1,8 @@
+A: Traceback (most recent call last):
+  File "/Users/Zach/Documents/CSCI101/CourseGradeFileLog.py", line 3, in <module>
+    f = file( filename, "a" )
+IOError: [Errno 2] No such file or directory: 'helluva/engineer.txt'
+
+D: It created the file in the parent directory of CSCI101, Documents
+
+E: It had to interact with the Documents folder, CSCI101 folder, and helluva folder. It probably started in CSCI101, followed .. to Documents, went back to CSCI101, then to helluva.

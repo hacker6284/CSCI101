@@ -8,5 +8,11 @@ def letters(n):
             let = let + "one"
     return let
 num = letters(int(raw_input("Enter Number: ")))
-print num
-print len(num)
+i=1
+while len(num) != 13 and len(num) != 18:
+    print num, len(num)
+    num = letters(int(len(num)))
+    i+=1
+else:
+    print num, len(num)
+    print "Finished with length %d after %d iterations"%(len(num),i)
