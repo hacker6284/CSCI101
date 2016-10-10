@@ -22,6 +22,8 @@ if groupme == "y":
     key = raw_input("Enter Key: ")
 
 j=num1
+thirteen = 0.0
+eighteen = 0.0
 while j<=num2:
     orig = j
     num = letters(orig)
@@ -33,10 +35,15 @@ while j<=num2:
     else:
         print num, len(num)
         print "Number %d finished with length %d after %d iterations"%(orig,len(num),i)
-
-    if groupme == "y":
-        ifttt("binary", orig, len(num), i, key)
-    else:
-        print "Okay."
+        if groupme == "y":
+            ifttt("binary", orig, len(num), i, key)
+        else:
+            print "Okay."
+        if len(num) == 13:
+            thirteen+=1
+        else:
+            eighteen+=1
     j+=1
-    time.sleep(2)
+print "%f of the %d numbers finished with length 13 and %f finished with length 18"%(thirteen/(thirteen+18),num2-num1,eighteen/(thirteen+18))
+if groupme == "y":
+    ifttt("binary2", thirteen/(thirteen+eighteen), num2-num1, eighteen/(thirteen+eighteen), key)
