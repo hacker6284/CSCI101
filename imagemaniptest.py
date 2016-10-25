@@ -1,14 +1,18 @@
 import urllib
 from PIL import Image
 
-height = int(raw_input("Enter height: "))
 width = int(raw_input("Enter width: "))
+height = int(raw_input("Enter height: "))
 thumbwidth = 16*(height/9)
 count = int(raw_input("Number of images: "))
+blur = ""
+if (raw_input("Blur the images?(y,n) ")=="y"):
+    blur = "&blur"
+else: blur = ""
 i=0
 
 while (i < count):
-    URL = "http://www.unsplash.it/%d/%d/?random"%(width,height)
+    URL = "http://www.unsplash.it/%d/%d/?random%s"%(width,height,blur)
     urllib.urlretrieve(URL, "imagetests/%d.png"%(i))
     
     background = Image.open("imagetests/%d.png"%(i))
