@@ -1,7 +1,7 @@
 import urllib
 from PIL import Image
 from PIL import ImageFilter
-import tkinter as tk
+import Tkinter as tk
 import tkFileDialog
 import sys
 
@@ -24,6 +24,8 @@ else:
     count = int(raw_input("Number of images: "))
     
 thumbwidth = 16*(height/9)
+thumbheight = 9*(width/16)
+
 i=0
 
 save = tk.Tk()
@@ -48,7 +50,7 @@ while (i < count):
 
     background2 = background.filter(ImageFilter.GaussianBlur(10))
 
-    overlay.thumbnail([max(thumbwidth, width),max(thumbwidth, width)])
+    #overlay = overlay.resize((thumbwidth,height))
     newwidth,newheight = overlay.size
     
     background.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
