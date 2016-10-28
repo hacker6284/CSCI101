@@ -41,6 +41,8 @@ save.update()
 save.destroy()
 save.quit()
 
+blur = int(raw_input("Blur...(1=none,2=only)"))
+
 while (i < count):
     if (random != "y"): 
         URL = "http://www.unsplash.it/%d/%d/?random"%(width,height)
@@ -54,15 +56,17 @@ while (i < count):
 
     background2 = background.filter(ImageFilter.GaussianBlur(10))
 
-    #overlay = overlay.resize((thumbwidth,height))
+    overlay = overlay.resize((thumbwidth,height))
     newwidth,newheight = overlay.size
     
     background.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
     background2.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
     background.load()
-    background.save("%s/%d_noblur.png"%(savedir,i),"PNG")
+    if (blur != 2):
+        background.save("%s/%d_noblur.png"%(savedir,i),"PNG")
     background2.load()
-    background2.save("%s/%d.png"%(savedir,i),"PNG")
+    if (blur != 1):
+        background2.save("%s/%d.png"%(savedir,i),"PNG")
 
     #overlay.crop((newwidth/2-width/2,newheight/2+height/2,newwidth/2+width/2,newheight/2-height/2))
     #background2.paste(background, (0, 0), overlay)
