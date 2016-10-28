@@ -8,6 +8,8 @@ import sys
 random = raw_input("Do you have an image?(y/n) ")
 if (random == "y"):
     root = tk.Tk()
+    root.attributes("-topmost", True)
+    root.attributes("-topmost", False)
     root.update()
     root.withdraw()
     file_path = tkFileDialog.askopenfilename(title="Choose Image")
@@ -29,6 +31,8 @@ thumbheight = 9*(width/16)
 i=0
 
 save = tk.Tk()
+save.attributes("-topmost", True)
+save.attributes("-topmost", False)
 save.update()
 save.withdraw()
 savedir = tkFileDialog.askdirectory(title="Choose Save Location")
