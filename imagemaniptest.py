@@ -41,7 +41,7 @@ save.update()
 save.destroy()
 save.quit()
 
-blur = int(raw_input("Blur...(1=none,2=only)"))
+mode = int(raw_input("Mode(0=default,1=noblur,2=onlyblur,3=pixelate,4=pixelatebackground)"))
 
 while (i < count):
     if (random != "y"): 
@@ -56,17 +56,33 @@ while (i < count):
 
     background2 = background.filter(ImageFilter.GaussianBlur(10))
 
+    if (mode > 2):
+        pixelback = background.resize((width/10,height/10))
+        pixelback2 = pixelback.resize((width,height))
+
     overlay = overlay.resize((thumbwidth,height))
     newwidth,newheight = overlay.size
     
     background.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
     background2.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
-    background.load()
-    if (blur != 2):
+    if (mode == 3):
+        pixelback.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
+        pixelback = pixelback.resize((width,height))
+    if (mode == 4):
+        pixelback2 = pixelback2.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
+
+    if (mode == 0 or mode == 1):
+        background.load()
         background.save("%s/%d_noblur.png"%(savedir,i),"PNG")
-    background2.load()
-    if (blur != 1):
+    if (mode == 0 or mode == 2):
+        background2.load()
         background2.save("%s/%d.png"%(savedir,i),"PNG")
+    if (mode == 3):
+        pixelback.load()
+        pixelback.save("%s/%d_pixel.png"%(savedir,i),"PNG")
+    if (mode == 4):
+        pixelback2.load()
+        pixelback2.save("%s/%d_pixelback.png"%(savedir,i),"PNG")
 
     #overlay.crop((newwidth/2-width/2,newheight/2+height/2,newwidth/2+width/2,newheight/2-height/2))
     #background2.paste(background, (0, 0), overlay)
