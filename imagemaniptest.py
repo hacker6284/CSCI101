@@ -59,7 +59,7 @@ while (i < count):
     if (mode > 2):
         pixelback = background.resize((width/10,height/10))
         pixelback2 = pixelback.resize((width,height))
-
+        
     overlay = overlay.resize((thumbwidth,height))
     newwidth,newheight = overlay.size
     
@@ -72,16 +72,12 @@ while (i < count):
         pixelback2 = pixelback2.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
 
     if (mode == 0 or mode == 1):
-        background.load()
         background.save("%s/%d_noblur.png"%(savedir,i),"PNG")
     if (mode == 0 or mode == 2):
-        background2.load()
         background2.save("%s/%d.png"%(savedir,i),"PNG")
     if (mode == 3):
-        pixelback.load()
         pixelback.save("%s/%d_pixel.png"%(savedir,i),"PNG")
     if (mode == 4):
-        pixelback2.load()
         pixelback2.save("%s/%d_pixelback.png"%(savedir,i),"PNG")
 
     #overlay.crop((newwidth/2-width/2,newheight/2+height/2,newwidth/2+width/2,newheight/2-height/2))
