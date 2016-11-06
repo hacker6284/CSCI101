@@ -25,8 +25,8 @@ else:
     height = int(raw_input("Enter height: "))
     count = int(raw_input("Number of images: "))
     
-thumbwidth = 16*(height/9)
-thumbheight = 9*(width/16)
+thumbwidth = int(16*(height/9))
+thumbheight = int(9*(width/16))
 
 i=0
 
