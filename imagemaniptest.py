@@ -25,8 +25,8 @@ else:
     height = int(raw_input("Enter height: "))
     count = int(raw_input("Number of images: "))
     
-thumbwidth = 16*(height/9)
-thumbheight = 9*(width/16)
+thumbwidth = int(16*(height/9))
+thumbheight = int(9*(width/16))
 
 i=0
 
@@ -56,29 +56,29 @@ while (i < count):
 
     background2 = background.filter(ImageFilter.GaussianBlur(10))
 
-    if (mode > 2):
-        pixelback = background.resize((width/10,height/10))
-        pixelback2 = pixelback.resize((width,height))
+    #if (mode > 2):
+        #pixelback = background.resize((width/10,height/10))
+        #pixelback2 = pixelback.resize((width,height))
         
     overlay = overlay.resize((thumbwidth,height))
     newwidth,newheight = overlay.size
-    
-    background.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
-    background2.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
-    if (mode == 3):
-        pixelback.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
-        pixelback = pixelback.resize((width,height))
-    if (mode == 4):
-        pixelback2 = pixelback2.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
-
+   
     if (mode == 0 or mode == 1):
+        background.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
         background.save("%s/%d_noblur.png"%(savedir,i),"PNG")
     if (mode == 0 or mode == 2):
+        background2.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
         background2.save("%s/%d.png"%(savedir,i),"PNG")
     if (mode == 3):
+        background.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
+        pixelback = background.resize((width/10,height/10))
+        pixelback = pixelback.resize((width,height))
         pixelback.save("%s/%d_pixel.png"%(savedir,i),"PNG")
     if (mode == 4):
-        pixelback2.save("%s/%d_pixelback.png"%(savedir,i),"PNG")
+        pixelback = background.resize((width/10,height/10))
+        pixelback = pixelback.resize((width,height))
+        pixelback.paste(overlay, (0-(newwidth-width)/2,0-(newheight-height)/2), overlay)
+        pixelback.save("%s/%d_pixelback.png"%(savedir,i),"PNG")
 
     #overlay.crop((newwidth/2-width/2,newheight/2+height/2,newwidth/2+width/2,newheight/2-height/2))
     #background2.paste(background, (0, 0), overlay)
