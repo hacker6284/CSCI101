@@ -1,6 +1,6 @@
 import math
 
-Basestring = raw_input("Enter the coefficients: ")
+Basestring = raw_input("Enter the coefficient symbols: ")
 x = int(raw_input("Enter a non-negative integer to convert: "))
 
 def Encode(x,string):
