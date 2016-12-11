@@ -25,7 +25,7 @@ while changed == 1:
 		if contenders[i][0] not in contenders[i-1]:
 			better = 2
 			while better not in {0,1}:
-				better = int(raw_input("Is %s better than %s? (1 for yes, 0 for no): "%(contenders[i][0],contenders[i-1][0])))
+				better = int("0" + raw_input("Is %s better than %s? (1 for yes, 0 for no): "%(contenders[i][0],contenders[i-1][0])))
 			if better == 0:
 				contenders[i-1] += [contenders[i][0]]
 			else:
